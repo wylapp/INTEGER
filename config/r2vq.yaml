@@ -1,0 +1,32 @@
+# experiment settings
+plm: Qwen/Qwen3-Embedding-4B
+vlm: Qwen/Qwen3-VL-Embedding-2B
+num_workers: 4
+batch_size: 64
+encode_batch_size: 4
+force_preprocess: False
+rq_lr: 1e-3
+rq_lr_codebook: 1e-3
+rq_epoch: 2000
+rq_batch_size: 2048
+rq_weight_decay: 1e-4
+warmup_proportion: 0.1
+# dataset related
+data_dir: data_18
+dataset: Arts_Crafts_and_Sewing
+desc_maxlen: 450
+seed: 42
+item_count: 0 # this will automatically be set when running
+
+# model settings
+beta: 0.25
+plm_emb_dim: 2048
+# this parameter is used to determine the MRL dimension
+codebook_size: [256, 256, 256, 256]
+codebook_dim: 2048
+layer_wise: true
+sid_group_v: qwen2Bvl_calib
+sid_group_t: qwen4B_calib
+
+
+

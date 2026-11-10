@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amazon product card</title>
+<style>
+    body {
+        font-size: 20px;
+        margin:0;
+        padding:0;
+        background: #e8e8e8;
+    }
+
+    #card {
+        width: 336px;
+        height: 672px;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        font-family: Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .thumb {
+        width: 336px;
+        height: 298px;
+        flex-shrink: 0;
+        background: #f2f2f2;
+        background-image: url("data:image/{{ img_ext }};base64,{{ img_base64 }}");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    .content {
+        position: relative;       
+        flex: 1;
+        padding: 10px;
+        padding-bottom: 25px;      
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .title {
+        font-size:22px;
+        line-height:1;
+        color:#212121;
+        display:-webkit-box;
+        line-clamp:5;
+        -webkit-line-clamp:5;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+    }
+
+    .labels {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 2px;
+    }
+
+    .label {
+        display: inline-block;
+        background-color: #ededed;
+        padding: 0 5px;
+        margin: 2px 5px 2px 0;
+        font-size: 15px;
+        color: #555;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .abstract {
+        font-size: 16px;
+        line-height: 1.1;
+        color: #687280;
+        overflow-wrap: break-word;
+        hyphens: auto;
+
+        flex: 1;
+		text-overflow: ellipsis;
+        overflow: hidden; 
+	}
+
+    .actions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 4px 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(to top, #ffffff, rgba(255,255,255,0.9));
+        box-sizing: border-box;
+    }
+
+    .price {
+        font-size: 28px;
+        line-height: 1;
+    }
+
+    .price small {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 4px 14px;
+        font-size: 18px;
+        background: #ffd814;
+        border-radius: 20px;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    .btn-buy {
+        padding: 4px 14px;
+        font-size: 18px;
+        background: rgb(255,127,39);
+        border-radius: 20px;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+</style>
+</head>
+<body>
+<div id="card">
+    <div class="thumb"></div>
+    <div class="content">
+        <div class="title">
+            {{ title }}
+        </div>
+
+        <div class="labels">
+            {% for label in labels %}
+            <div class="label">{{ label }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="abstract">
+            {{ abs }}
+        </div>
+
+        <div class="actions">
+            
+            <div class="price">
+                {% if price %}
+                <small>$</small>{{ price[0] }}.<small>{{ price[1] }}</small>
+                {% endif %}
+            </div>
+            <button class="btn">Add to cart</button>
+            <button class="btn-buy">Buy now</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# dataset & experiment settings
+plm: Qwen/Qwen3-Embedding-4B
+vlm: Qwen/Qwen3-VL-Embedding-2B
+data_dir: data_18
+dataset: Arts_Crafts_and_Sewing
+seed: 42
+max_history_length: 20
+lr: 1e-3
+batch_size: 1024
+eval_batch_size: 2048
+epochs: 300
+warmup_proportion: 0.05
+weight_decay: 0.01
+num_workers: 16
+padding: right
+
+#model settings
+num_layers: 4
+num_decoder_layers: 4
+num_heads: 6
+d_kv: 64
+d_model: 192
+d_ff: 1024
+dropout_rate: 0.15
+feed_forward_proj: "relu"
+vocab_size: 2050
+pad_token_id: 2048
+eos_token_id: 2049
+num_beams: 20
+rrf_k: 5
+image_rrf_weight: 1
+slide_window: true
+sid_group_v: qwen2Bvl_calib
+sid_group_t: qwen4B_calib
+sid_group: qwen4B_calibqwen2Bvl_calib
